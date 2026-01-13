@@ -1,0 +1,11 @@
+<form id="businessForm">
+  <input type="text" id="businessName" placeholder="Business Name" required />
+  <input type="text" id="service" placeholder="Service" required />
+  <input type="text" id="location" placeholder="Location" required />
+  <button type="submit">Generate Content</button>
+</form>
+
+<div id="generatedContent"></div>
+
+<script src="ai-generator.js"></script>
+<script src="index.js"></script>
