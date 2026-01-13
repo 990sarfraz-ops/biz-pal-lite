@@ -1,0 +1,88 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // Container
+    const container = document.createElement("div");
+    container.style.width = "90%";
+    container.style.margin = "20px auto";
+    container.style.padding = "20px";
+    container.style.borderRadius = "15px";
+    container.style.background = "#f9f9f9";
+    container.style.boxShadow = "0 4px 15px rgba(0,0,0,0.1)";
+    container.style.fontFamily = "Arial, sans-serif";
+
+    // Title
+    const title = document.createElement("h2");
+    title.innerText = "AI Voice Dialogue Assistant";
+    title.style.textAlign = "center";
+    title.style.color = "#333";
+
+    // Start Button
+    const startBtn = document.createElement("button");
+    startBtn.innerText = "Start Talking";
+    startBtn.style.padding = "12px";
+    startBtn.style.marginTop = "10px";
+    startBtn.style.width = "100%";
+    startBtn.style.border = "none";
+    startBtn.style.borderRadius = "10px";
+    startBtn.style.backgroundColor = "#4CAF50";
+    startBtn.style.color = "#fff";
+    startBtn.style.fontSize = "16px";
+    startBtn.style.cursor = "pointer";
+
+    // Output Area
+    const outputArea = document.createElement("textarea");
+    outputArea.rows = 10;
+    outputArea.style.width = "100%";
+    outputArea.style.padding = "10px";
+    outputArea.style.marginTop = "10px";
+    outputArea.style.borderRadius = "10px";
+    outputArea.style.border = "1px solid #ccc";
+    outputArea.readOnly = true;
+
+    container.appendChild(title);
+    container.appendChild(startBtn);
+    container.appendChild(outputArea);
+    document.body.appendChild(container);
+
+    // Voice Recognition Setup
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = "ur-PK"; // اردو بولنے کے لیے
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    // Speech Synthesis Setup
+    function speakText(text) {
+        const synth = window.speechSynthesis;
+        const utterThis = new SpeechSynthesisUtterance(text);
+        utterThis.lang = "ur-PK"; 
+        utterThis.rate = 1;
+        synth.speak(utterThis);
+    }
+
+    startBtn.onclick = function() {
+        recognition.start();
+        outputArea.value = "Listening...";
+    };
+
+    recognition.onresult = function(event) {
+        const userSpeech = event.results[0][0].transcript;
+        outputArea.value = "You said: " + userSpeech + "\nProcessing AI response...";
+
+        // AI Assistant Response (placeholder logic)
+        let aiResponse = "یہ AI کا جواب ہے: آپ نے کہا '" + userSpeech + "'";
+
+        // Update output
+        outputArea.value += "\nAI says: " + aiResponse;
+
+        // Speak the response
+        speakText(aiResponse);
+    };
+
+    recognition.onerror = function(event) {
+        outputArea.value = "Error occurred: " + event.error;
+    };
+
+    recognition.onend = function() {
+        outputArea.value += "\nVoice session ended. Click 'Start Talking' to speak again.";
+    };
+});
