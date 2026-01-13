@@ -1,0 +1,45 @@
+function autoPublish(platform, content) {
+
+  if (!platform || !content) {
+    return "Platform & content required";
+  }
+
+  let publishMessage = "";
+
+  if (platform === "facebook") {
+    publishMessage = `
+📢 Facebook Post Ready:
+${content.caption}
+
+${content.description}
+`;
+  }
+
+  if (platform === "youtube") {
+    publishMessage = `
+🎬 YouTube Video Ready:
+Title: ${content.caption}
+
+Description:
+${content.description}
+`;
+  }
+
+  if (platform === "instagram") {
+    publishMessage = `
+📸 Instagram Post:
+${content.caption}
+#trending #viral
+`;
+  }
+
+  return publishMessage;
+}
+
+// Example usage
+const content = {
+  caption: "Learn Online Business",
+  description: "Complete guide for beginners"
+};
+
+console.log(autoPublish("facebook", content));
