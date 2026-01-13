@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8">
+  <title>Biz-Pal Lite | AI Business Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0a3d62;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      padding: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      border: none;
+      font-size: 16px;
+    }
+    .output {
+      background: white;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Biz-Pal Lite</h1>
+  <p>آپ کا AI بزنس اسسٹنٹ</p>
+</header>
+
+<section>
+  <h3>اپنے بزنس کی معلومات ڈالیں</h3>
+  <input type="text" placeholder="بزنس کا نام">
+  <input type="text" placeholder="شہر / علاقہ">
+  <textarea placeholder="اپنی سروس یا پروڈکٹ لکھیں"></textarea>
+  <button onclick="generate()">AI سے مواد بنائیں</button>
+
+  <div class="output" id="result">
+    یہاں AI کا تیار کیا ہوا بزنس مواد آئے گا۔
+  </div>
+</section>
+
+<footer>
+  © 2026 Biz-Pal Lite — Free Business Assistant
+</footer>
+
+<script>
+  function generate() {
+    document.getElementById("result").innerText =
+      "یہ ڈیمو AI اسسٹنٹ ہے۔ اگلے مرحلے میں ہم اصل AI جوڑیں گے۔";
+  }
+</script>
+
+</body>
+</html>
