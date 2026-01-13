@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Voice System</title>
+</head>
+<body>
+
+<h2>🎙️ Talk to AI</h2>
+<button onclick="startListening()">Speak</button>
+<p id="output"></p>
+
+<script>
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = "ur-PK";
+
+function startListening() {
+  recognition.start();
+}
+
+recognition.onresult = function(event) {
+  const userVoice = event.results[0][0].transcript;
+  document.getElementById("output").innerText = "You said: " + userVoice;
+
+  const aiReply = generateReply(userVoice);
+  speak(aiReply);
+};
+
+function generateReply(text) {
+  return `آپ نے کہا: ${text}. یہ ایک آٹو وائس سسٹم ہے۔`;
+}
+
+function speak(message) {
+  const speech = new SpeechSynthesisUtterance(message);
+  speech.lang = "ur-PK";
+  window.speechSynthesis.speak(speech);
+}
+</script>
+
+</body>
+</html>
