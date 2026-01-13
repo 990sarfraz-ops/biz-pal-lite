@@ -1,0 +1,13 @@
+const videoForm = document.getElementById("videoForm");
+const videoOutput = document.getElementById("videoOutput");
+
+videoForm.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const topic = document.getElementById("topic").value;
+    const duration = document.getElementById("duration").value;
+
+    const script = generateVideoScript(topic, duration);
+
+    videoOutput.textContent = script;
+});
