@@ -1,0 +1,32 @@
+// Asr-e-Iqbal
+// Auto Content Generator System
+
+function autoGenerateContent(topic) {
+  if (!topic) {
+    return "Topic is required";
+  }
+
+  const content = {
+    caption: `Learn ${topic} in a simple and practical way.`,
+    
+    description: `This content explains ${topic} step by step so that beginners can easily understand and apply it in real life.`,
+    
+    script: `
+Assalam-o-Alaikum!
+Aaj hum baat karenge "${topic}" ke baare mein.
+
+Is video mein:
+- Basic samjhenge
+- Practical example dekhenge
+- Aur common mistakes se bachna seekhenge
+
+Agar aap seekhna chahte hain ${topic},
+toh video ko end tak zaroor dekhein.
+`
+  };
+
+  return content;
+}
+
+// Temporary test
+console.log(autoGenerateContent("Online Business"));
