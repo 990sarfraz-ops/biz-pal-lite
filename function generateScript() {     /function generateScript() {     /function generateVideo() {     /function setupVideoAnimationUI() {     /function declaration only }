@@ -1,0 +1,97 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // Container div
+    const container = document.createElement("div");
+    container.style.width = "90%";
+    container.style.margin = "20px auto";
+    container.style.padding = "15px";
+    container.style.borderRadius = "15px";
+    container.style.background = "linear-gradient(to right, #f5f7fa, #c3cfe2)";
+    container.style.boxShadow = "0 4px 10px rgba(0,0,0,0.1)";
+    container.style.fontFamily = "Arial, sans-serif";
+
+    // Title
+    const title = document.createElement("h2");
+    title.innerText = "AI Video Animator";
+    title.style.textAlign = "center";
+    title.style.color = "#333";
+
+    // Input box for video topic
+    const topicInput = document.createElement("input");
+    topicInput.id = "videoTopic";
+    topicInput.placeholder = "Type your video topic...";
+    topicInput.style.width = "100%";
+    topicInput.style.padding = "10px";
+    topicInput.style.margin = "10px 0";
+    topicInput.style.borderRadius = "10px";
+    topicInput.style.border = "1px solid #ccc";
+
+    // Generate button
+    const generateBtn = document.createElement("button");
+    generateBtn.innerText = "Generate Video Script";
+    generateBtn.style.width = "100%";
+    generateBtn.style.padding = "12px";
+    generateBtn.style.margin = "10px 0";
+    generateBtn.style.border = "none";
+    generateBtn.style.borderRadius = "10px";
+    generateBtn.style.backgroundColor = "#4CAF50";
+    generateBtn.style.color = "#fff";
+    generateBtn.style.fontSize = "16px";
+    generateBtn.style.cursor = "pointer";
+
+    // Output textarea
+    const outputArea = document.createElement("textarea");
+    outputArea.id = "videoOutput";
+    outputArea.rows = 12;
+    outputArea.cols = 50;
+    outputArea.style.width = "100%";
+    outputArea.style.padding = "10px";
+    outputArea.style.borderRadius = "10px";
+    outputArea.style.border = "1px solid #ccc";
+    outputArea.style.marginTop = "10px";
+    outputArea.readOnly = true;
+
+    // Copy button
+    const copyBtn = document.createElement("button");
+    copyBtn.innerText = "Copy Script";
+    copyBtn.style.width = "100%";
+    copyBtn.style.padding = "12px";
+    copyBtn.style.marginTop = "10px";
+    copyBtn.style.border = "none";
+    copyBtn.style.borderRadius = "10px";
+    copyBtn.style.backgroundColor = "#2196F3";
+    copyBtn.style.color = "#fff";
+    copyBtn.style.fontSize = "16px";
+    copyBtn.style.cursor = "pointer";
+
+    // Button actions
+    generateBtn.onclick = function() {
+        const topic = topicInput.value;
+        if(topic.trim() === "") {
+            alert("Please enter a video topic!");
+            return;
+        }
+        // Simple trending script simulation
+        const frames = [
+            `🔥 Intro: Presenting ${topic}`,
+            `📌 Key Point 1 on ${topic}`,
+            `📌 Key Point 2 on ${topic}`,
+            `🎯 Example/Illustration for ${topic}`,
+            `✅ Conclusion and CTA for ${topic}`
+        ];
+        outputArea.value = frames.join("\n\n");
+    };
+
+    copyBtn.onclick = function() {
+        navigator.clipboard.writeText(outputArea.value);
+        alert("Video script copied to clipboard!");
+    };
+
+    // Append everything
+    container.appendChild(title);
+    container.appendChild(topicInput);
+    container.appendChild(generateBtn);
+    container.appendChild(outputArea);
+    container.appendChild(copyBtn);
+
+    document.body.appendChild(container);
+});
