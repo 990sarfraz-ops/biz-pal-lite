@@ -1,0 +1,45 @@
+// Asr-e-Iqbal
+// Auto Course & Video Planner System
+
+function autoPlanCourse(topic) {
+  if (!topic) {
+    return "Topic required";
+  }
+
+  const plan = [];
+
+  plan.push({
+    lesson: 1,
+    title: `Introduction to ${topic}`,
+    goal: "Basic understanding"
+  });
+
+  plan.push({
+    lesson: 2,
+    title: `${topic} – Core Concepts`,
+    goal: "Strong foundation"
+  });
+
+  plan.push({
+    lesson: 3,
+    title: `Practical use of ${topic}`,
+    goal: "Real-world usage"
+  });
+
+  plan.push({
+    lesson: 4,
+    title: `Common mistakes in ${topic}`,
+    goal: "Avoid failures"
+  });
+
+  plan.push({
+    lesson: 5,
+    title: `Advanced growth with ${topic}`,
+    goal: "Scaling & mastery"
+  });
+
+  return plan;
+}
+
+// Temporary test
+console.log(autoPlanCourse("Online E-commerce Business"));
