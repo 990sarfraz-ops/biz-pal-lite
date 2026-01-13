@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>Video Script Generator</title>
+<style>
+  body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
+  label { display: block; margin-top: 10px; }
+  textarea { width: 100%; height: 150px; margin-top: 10px; }
+  input, button { padding: 8px; margin-top: 10px; width: 100%; }
+</style>
+</head>
+<body>
+
+<h2>Urdu Video Script Generator</h2>
+
+<label>Business Name:</label>
+<input type="text" id="businessName" placeholder="اپنے بزنس کا نام لکھیں">
+
+<label>Topic:</label>
+<input type="text" id="topic" placeholder="ویڈیو کا موضوع">
+
+<label>Duration (Minutes):</label>
+<input type="number" id="duration" value="3">
+
+<button onclick="generateScript()">Generate Video Script</button>
+
+<label>Generated Video Script:</label>
+<textarea id="result" readonly></textarea>
+
+<script src="video-prompt-generator.js"></script>
+<script>
+function generateScript() {
+    let name = document.getElementById("businessName").value;
+    let topic = document.getElementById("topic").value;
+    let duration = parseInt(document.getElementById("duration").value);
+
+    if (!name || !topic || !duration) {
+        alert("تمام فیلڈز بھرنا ضروری ہیں!");
+        return;
+    }
+
+    let script = generateVideoPrompt(name, topic, duration);
+    document.getElementById("result").value = script;
+}
+</script>
+
+</body>
+</html>
