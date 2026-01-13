@@ -1,0 +1,41 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // Input box for topic
+    const inputBox = document.createElement("input");
+    inputBox.id = "topicInput";
+    inputBox.placeholder = "Enter topic";
+    inputBox.style.width = "300px";
+    inputBox.style.margin = "5px";
+
+    // Generate button
+    const generateBtn = document.createElement("button");
+    generateBtn.innerText = "Generate Script";
+    generateBtn.style.margin = "5px";
+    generateBtn.onclick = function() {
+        const topic = document.getElementById("topicInput").value;
+        const script = `Topic: ${topic}\nHello everyone! Today we discuss ${topic}.\nCall to action: Contact now!`;
+        document.getElementById("output").value = script;
+    };
+
+    // Output textarea
+    const outputArea = document.createElement("textarea");
+    outputArea.id = "output";
+    outputArea.rows = 10;
+    outputArea.cols = 50;
+    outputArea.style.margin = "5px";
+
+    // Copy button
+    const copyBtn = document.createElement("button");
+    copyBtn.innerText = "Copy Script";
+    copyBtn.style.margin = "5px";
+    copyBtn.onclick = function() {
+        const text = document.getElementById("output").value;
+        navigator.clipboard.writeText(text);
+        alert("Script copied!");
+    };
+
+    // Append all elements to body
+    document.body.appendChild(inputBox);
+    document.body.appendChild(generateBtn);
+    document.body.appendChild(copyBtn);
+    document.body.appendChild(outputArea);
+});
