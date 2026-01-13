@@ -1,0 +1,50 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // Input box for video topic
+    const videoInput = document.createElement("input");
+    videoInput.id = "videoTopic";
+    videoInput.placeholder = "Enter video topic";
+    videoInput.style.width = "300px";
+    videoInput.style.margin = "5px";
+
+    // Generate Video button
+    const videoBtn = document.createElement("button");
+    videoBtn.innerText = "Generate Video";
+    videoBtn.style.margin = "5px";
+    videoBtn.onclick = function() {
+        const topic = document.getElementById("videoTopic").value;
+
+        // Simulated AI video generation steps
+        const frames = [
+            `Frame 1: Introduction about ${topic}`,
+            `Frame 2: Key points on ${topic}`,
+            `Frame 3: Example & Illustration`,
+            `Frame 4: Summary of ${topic}`,
+            `Frame 5: Call to Action`
+        ];
+
+        document.getElementById("videoOutput").value = frames.join("\n\n");
+    };
+
+    // Output textarea
+    const videoOutput = document.createElement("textarea");
+    videoOutput.id = "videoOutput";
+    videoOutput.rows = 15;
+    videoOutput.cols = 50;
+    videoOutput.style.margin = "5px";
+
+    // Copy Video Script button
+    const copyVideoBtn = document.createElement("button");
+    copyVideoBtn.innerText = "Copy Video Script";
+    copyVideoBtn.style.margin = "5px";
+    copyVideoBtn.onclick = function() {
+        const text = document.getElementById("videoOutput").value;
+        navigator.clipboard.writeText(text);
+        alert("Video script copied!");
+    };
+
+    // Append all elements to body
+    document.body.appendChild(videoInput);
+    document.body.appendChild(videoBtn);
+    document.body.appendChild(copyVideoBtn);
+    document.body.appendChild(videoOutput);
+});
